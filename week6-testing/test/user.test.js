@@ -48,3 +48,12 @@ describe('User API Tests', function () {
     expect(res.body.data.length).to.be.greaterThan(0);
   });
 });
+
+it('should return 200 OK for GET /', async () => {
+  const res = await request(app).get('/');
+  expect(res.statusCode).to.equal(200);
+});
+it('should start with an empty users collection', async () => {
+  const users = await User.find();
+  expect(users.length).to.equal(0);
+});
